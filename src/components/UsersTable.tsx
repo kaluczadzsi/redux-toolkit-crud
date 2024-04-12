@@ -1,9 +1,10 @@
 import { useAppSelector } from '../../hook';
+import { UserTable as UserTableProps } from '../../types/usertable';
 
-const UsersTable = () => {
+const UsersTable = ({ openModal, handleSetUserId }: UserTableProps) => {
   const users = useAppSelector((state) => state.users);
 
-  return (
+  return users.length ? (
     <table className="table text-secondary text-lg">
       <thead>
         <tr>
@@ -18,29 +19,37 @@ const UsersTable = () => {
           <tr key={user.id}>
             <th scope="row">{user.id}</th>
             <td>
-              <input
-                className="bg-white"
-                disabled
-                type="text"
-                value={user.name}
-              />
+              <p> {user.name}</p>
             </td>
             <td>
-              <input
-                className="bg-white"
-                type="text"
-                value={user.email}
-                disabled
-              />
+              <p> {user.email}</p>
             </td>
             <td className="flex gap-2">
-              <button className="btn btn-primary">Edit</button>
-              <button className="btn btn-danger">Delete</button>
+              <button
+                onClick={() => {
+                  handleSetUserId(user.id);
+                  openModal();
+                }}
+                className="btn btn-primary"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => {
+                  handleSetUserId(user.id);
+                  openModal();
+                }}
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+  ) : (
+    <div className="font-bold text-lg">There are no users.</div>
   );
 };
 
