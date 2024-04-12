@@ -25,15 +25,7 @@ const UsersTable = ({ openModal, handleSetUserId }: UserTableProps) => {
               <p> {user.email}</p>
             </td>
             <td className="flex gap-2">
-              <button
-                onClick={() => {
-                  handleSetUserId(user.id);
-                  openModal();
-                }}
-                className="btn btn-primary"
-              >
-                Edit
-              </button>
+              <button className="btn btn-primary">Edit</button>
               <button
                 onClick={() => {
                   handleSetUserId(user.id);

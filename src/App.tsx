@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import DeleteModal from './components/DeleteModal';
 import UsersTable from './components/UsersTable';
-import useSelectedUser from './components/useSelectedUser';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +22,6 @@ const App = () => {
       </h1>
 
       <button
-        onClick={handleOpenModal}
         type="button"
         className="btn btn-success flex items-center justify-center my-6"
       >
